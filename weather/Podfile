@@ -12,7 +12,7 @@ target 'weather' do
   # Pods for weather
 
   # API
-  pod 'Moya', '~> 13.0'
+  pod 'Moya-ModelMapper', '~> 10.0'
 
   #UI
   pod 'Kingfisher', '~> 5.0'

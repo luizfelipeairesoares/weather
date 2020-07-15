@@ -1,38 +1,46 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.2.1)
   - Kingfisher (5.14.1):
     - Kingfisher/Core (= 5.14.1)
   - Kingfisher/Core (5.14.1)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
+  - ModelMapper (10.0.0):
+    - ModelMapper/Core (= 10.0.0)
+  - ModelMapper/Core (10.0.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya-ModelMapper (10.0.0):
+    - Moya-ModelMapper/Core (= 10.0.0)
+  - Moya-ModelMapper/Core (10.0.0):
+    - ModelMapper (~> 10.0)
+    - Moya (~> 14.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
   - NVActivityIndicatorView (5.0.0):
     - NVActivityIndicatorView/Base (= 5.0.0)
   - NVActivityIndicatorView/Base (5.0.0)
-  - Result (4.1.0)
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
-  - Moya (~> 13.0)
+  - Moya-ModelMapper (~> 10.0)
   - NVActivityIndicatorView
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Kingfisher
+    - ModelMapper
     - Moya
+    - Moya-ModelMapper
     - NVActivityIndicatorView
-    - Result
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  ModelMapper: a8dbf2a2003bf626627b9fe7c9a22b3405a30404
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Moya-ModelMapper: e3a478500921e7299804dc1ac550f1ebf3228ade
   NVActivityIndicatorView: f109ed069924ac1b4adbc1ae9cfaeac0be1d6c2c
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: e60c4c800d555c55c25f414a21272ef61b0f3a3f
+PODFILE CHECKSUM: 71049ed5fcd3165b9a20689bd1ecb9f9f645ab67
 
 COCOAPODS: 1.9.3
