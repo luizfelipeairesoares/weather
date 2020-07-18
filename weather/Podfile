@@ -16,7 +16,7 @@ target 'weather' do
 
   #UI
   pod 'Kingfisher', '~> 5.0'
-  pod 'NVActivityIndicatorView'
+  pod 'NVActivityIndicatorView/Extended'
 
   target 'weatherTests' do
     inherit! :search_paths

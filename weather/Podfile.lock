@@ -15,14 +15,14 @@ PODS:
     - Moya (~> 14.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - NVActivityIndicatorView (5.0.0):
-    - NVActivityIndicatorView/Base (= 5.0.0)
   - NVActivityIndicatorView/Base (5.0.0)
+  - NVActivityIndicatorView/Extended (5.0.0):
+    - NVActivityIndicatorView/Base
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - Moya-ModelMapper (~> 10.0)
-  - NVActivityIndicatorView
+  - NVActivityIndicatorView/Extended
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -41,6 +41,6 @@ SPEC CHECKSUMS:
   Moya-ModelMapper: e3a478500921e7299804dc1ac550f1ebf3228ade
   NVActivityIndicatorView: f109ed069924ac1b4adbc1ae9cfaeac0be1d6c2c
 
-PODFILE CHECKSUM: 71049ed5fcd3165b9a20689bd1ecb9f9f645ab67
+PODFILE CHECKSUM: de98f291095023e3c7c839f845a5aa45911958d8
 
 COCOAPODS: 1.9.3
