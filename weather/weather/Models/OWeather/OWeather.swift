@@ -11,8 +11,9 @@ import Mapper
 
 struct OWeather: Mappable {
     
-    let sunrise: Float?
-    let sunset: Float?
+    let dt: Double?
+    let sunrise: Double?
+    let sunset: Double?
     var temp: OWeatherTemperature
     var feelsLike: OWeatherTemperature
     let pressure: Int?
@@ -23,7 +24,23 @@ struct OWeather: Mappable {
     let windDeg: Double?
     let weatherDescription: [OWeatherDescription]
     
+    var date: Date? {
+        guard let dt = dt else { return nil }
+        return Date(timeIntervalSince1970: dt)
+    }
+    
+    var sunriseDate: Date? {
+        guard let rise = sunrise else { return nil }
+        return Date(timeIntervalSince1970: rise)
+    }
+    
+    var sunsetDate: Date? {
+        guard let snst = sunset else { return nil }
+        return Date(timeIntervalSince1970: snst)
+    }
+    
     private enum CodingKeys: String, CodingKey {
+        case dt
         case sunrise
         case sunset
         case temp
@@ -39,6 +56,7 @@ struct OWeather: Mappable {
     
     init(map: Mapper) throws {
         do {
+            dt                  = map.optionalFrom(CodingKeys.dt.stringValue)
             sunrise             = map.optionalFrom(CodingKeys.sunrise.rawValue)
             sunset              = map.optionalFrom(CodingKeys.sunset.rawValue)
             temp                = try map.from(CodingKeys.temp.rawValue, transformation: OWeatherTemperature.mapOWeatherTemperature(_:))

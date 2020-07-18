@@ -52,16 +52,16 @@ struct OWeatherAPIRequest: Encodable {
             CodingKeys.units.rawValue       : units,
             CodingKeys.appid.rawValue       : appid
         ]
-        if let latitude = lat {
+        if let latitude = lat, let longitude = lon {
             requestDict[CodingKeys.lat.rawValue] = latitude
-        }
-        if let longitude = lon {
             requestDict[CodingKeys.lon.rawValue] = longitude
-        }
-        if let name = city {
+            return requestDict
+        } else if let name = city {
             requestDict[CodingKeys.city.rawValue] = name
+            return requestDict
+        } else {
+            return nil
         }
-        return requestDict
     }
     
 }
