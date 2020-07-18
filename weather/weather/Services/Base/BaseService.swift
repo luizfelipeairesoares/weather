@@ -8,6 +8,7 @@
 
 import Foundation
 import Mapper
+import Moya
 import Moya_ModelMapper
 
 protocol BaseService: BaseServiceProtocol {
@@ -16,7 +17,7 @@ protocol BaseService: BaseServiceProtocol {
 
 extension BaseService {
     
-    func request<T: Mappable>(_ target: OWeatherAPI, completion: @escaping (Result<T, OWeatherAPIError>) -> Void) {
+    func request<T: Mappable>(_ target: MultiTarget, completion: @escaping (Result<T, WeatherError>) -> Void) {
         provider.request(target) { (result) in
             switch result {
             case .success(let response):
@@ -28,7 +29,7 @@ extension BaseService {
                 }
             case .failure(let error):
                 print(error)
-                completion(.failure(.unauthorized))
+                completion(.failure(.requestUnauthorized))
             }
         }
     }

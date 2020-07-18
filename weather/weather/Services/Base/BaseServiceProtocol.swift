@@ -12,10 +12,10 @@ import Mapper
 
 protocol BaseServiceProtocol {
     
-    var provider: MoyaProvider<OWeatherAPI> { get }
+    var provider: MoyaProvider<MultiTarget> { get }
     
-    init(with provider: MoyaProvider<OWeatherAPI>)
+    init(with provider: MoyaProvider<MultiTarget>)
     
-    func request<T: Mappable>(_ target: OWeatherAPI, completion: @escaping (Result<T, OWeatherAPIError>) -> Void)
+    func request<T: Mappable>(_ target: MultiTarget, completion: @escaping (Result<T, WeatherError>) -> Void)
     
 }
