@@ -11,20 +11,21 @@ import Moya
 
 protocol WeatherServiceProtocol: BaseService {
     
-    func requestWeather(request: OWeatherAPIRequest, completion: @escaping (Result<OWeatherAPIResponse, OWeatherAPIError>) -> Void)
+    func requestWeather(request: OWeatherAPIRequest, completion: @escaping (Result<OWeatherAPIResponse, WeatherError>) -> Void)
     
 }
 
 struct WeatherService: WeatherServiceProtocol {
     
-    var provider: MoyaProvider<OWeatherAPI>
+    var provider: MoyaProvider<MultiTarget>
     
-    init(with provider: MoyaProvider<OWeatherAPI> = MoyaProvider<OWeatherAPI>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: NetworkLoggerPlugin.Configuration.LogOptions.verbose))])) {
+    init(with provider: MoyaProvider<MultiTarget> = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: NetworkLoggerPlugin.Configuration.LogOptions.verbose))])) {
         self.provider = provider
     }
     
-    func requestWeather(request: OWeatherAPIRequest, completion: @escaping (Result<OWeatherAPIResponse, OWeatherAPIError>) -> Void) {
-        self.request(.onecall(request: request)) { (result: Result<OWeatherAPIResponse, OWeatherAPIError>) in
+    func requestWeather(request: OWeatherAPIRequest, completion: @escaping (Result<OWeatherAPIResponse, WeatherError>) -> Void) {
+        let multiTarget = MultiTarget(OWeatherAPI.onecall(request: request))
+        self.request(multiTarget) { (result: Result<OWeatherAPIResponse, WeatherError>) in
             switch result {
             case .success(let response):
                 completion(.success(response))
