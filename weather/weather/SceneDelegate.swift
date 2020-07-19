@@ -20,17 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        var rootViewController: UIViewController? = nil
-        if let rawUserLocation = UserDefaults.standard.value(forKey: "user_location") as? [String : Any] {
-            let userLocation = UserLocation(fromDict: rawUserLocation)
-            rootViewController = MainViewController(with: userLocation)
-        } else {
-            rootViewController = LocationViewController()
-        }
-        let navigationController = UINavigationController(rootViewController: rootViewController!)
-        navigationController.isNavigationBarHidden = true
-        
-        window?.rootViewController = navigationController
+        window?.rootViewController = MainCoordinator().start()
         window?.makeKeyAndVisible()
     }
 
