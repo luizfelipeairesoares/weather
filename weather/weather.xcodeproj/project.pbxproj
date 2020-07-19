@@ -10,6 +10,8 @@
 		480AB925AAAC0E1AB7A4966B /* Pods_weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD984A9655817F470E701A /* Pods_weather.framework */; };
 		5503E46724C4D3B3001E9401 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E46624C4D3B3001E9401 /* ViewControllerProtocol.swift */; };
 		5503E46A24C4D46D001E9401 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E46924C4D46D001E9401 /* WeatherViewController.swift */; };
+		5503E46C24C4D995001E9401 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E46B24C4D995001E9401 /* CoordinatorProtocol.swift */; };
+		5503E46F24C4D9BA001E9401 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E46E24C4D9BA001E9401 /* MainCoordinator.swift */; };
 		5549CBC124C13C0D000E37C4 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549CBC024C13C0D000E37C4 /* LocationView.swift */; };
 		5549CBC324C13C1B000E37C4 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549CBC224C13C1B000E37C4 /* LocationViewController.swift */; };
 		555C808724BFCCED00C42262 /* PexelsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C808624BFCCED00C42262 /* PexelsAPI.swift */; };
@@ -65,6 +67,8 @@
 		498605DFA5F7851CA8A032F6 /* Pods-weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.release.xcconfig"; path = "Target Support Files/Pods-weather/Pods-weather.release.xcconfig"; sourceTree = "<group>"; };
 		5503E46624C4D3B3001E9401 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		5503E46924C4D46D001E9401 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		5503E46B24C4D995001E9401 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		5503E46E24C4D9BA001E9401 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5549CBC024C13C0D000E37C4 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		5549CBC224C13C1B000E37C4 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		555C808624BFCCED00C42262 /* PexelsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsAPI.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				5503E46624C4D3B3001E9401 /* ViewControllerProtocol.swift */,
+				5503E46B24C4D995001E9401 /* CoordinatorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -155,6 +160,14 @@
 				5503E46924C4D46D001E9401 /* WeatherViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5503E46D24C4D9AB001E9401 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				5503E46E24C4D9BA001E9401 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		5549CBBF24C13BFC000E37C4 /* Location */ = {
@@ -337,6 +350,7 @@
 		55C629B824B948F0008A3FD9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5503E46D24C4D9AB001E9401 /* Coordinators */,
 				5503E46824C4D458001E9401 /* ViewControllers */,
 				5503E46524C4D38C001E9401 /* Protocols */,
 				55D25CFD24C21C8C009E0AEB /* LocationModule */,
@@ -567,6 +581,7 @@
 				55C6299824B939F3008A3FD9 /* OWeatherDescription.swift in Sources */,
 				55C629BB24B9490C008A3FD9 /* Encodable.swift in Sources */,
 				555C809024BFCE9100C42262 /* PexelsPhotoSource.swift in Sources */,
+				5503E46C24C4D995001E9401 /* CoordinatorProtocol.swift in Sources */,
 				555C808C24BFCE3900C42262 /* PexelsService.swift in Sources */,
 				555C809224BFD00F00C42262 /* PexelsAPIRequest.swift in Sources */,
 				555C808724BFCCED00C42262 /* PexelsAPI.swift in Sources */,
@@ -584,6 +599,7 @@
 				55C629A224B93C2E008A3FD9 /* OWeatherAPIResponse.swift in Sources */,
 				55C6297124B92F17008A3FD9 /* SceneDelegate.swift in Sources */,
 				55D25D0D24C25B2D009E0AEB /* WeatherForecastView.swift in Sources */,
+				5503E46F24C4D9BA001E9401 /* MainCoordinator.swift in Sources */,
 				55C629AD24B945D1008A3FD9 /* OWeatherAPIRequest.swift in Sources */,
 				5503E46724C4D3B3001E9401 /* ViewControllerProtocol.swift in Sources */,
 				55C6299A24B93AD1008A3FD9 /* OWeather.swift in Sources */,
