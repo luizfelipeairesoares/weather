@@ -22,8 +22,8 @@ class MainView: UIView {
         static let edge: CGFloat = 8.0
         
         enum BackButton {
-            static let width: CGFloat = 44.0
-            static let height: CGFloat = 44.0
+            static let width: CGFloat = 40.0
+            static let height: CGFloat = 40.0
         }
         
         enum LabelCityName {
