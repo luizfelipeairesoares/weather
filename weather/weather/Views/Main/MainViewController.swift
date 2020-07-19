@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
-class MainViewController: UIViewController, NVActivityIndicatorViewable {
+class MainViewController: WeatherViewController {
     
     // MARK: - Private Properties
     
@@ -99,7 +98,7 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
     }
     
     private func requestPhotos() {
-        startAnimating()
+        showLoading()
         let request = PexelsAPIRequest(query: currentLocation.city ?? "", page: 1)
         PexelsService().requestPhotos(request: request) { [weak self] (result) in
             switch result {
@@ -131,7 +130,7 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
             case .failure(let error):
                 print(error)
             }
-            self?.stopAnimating()
+            self?.hideLoading()
         }
     }
     
@@ -157,10 +156,10 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         guard let city = searchedCity, !city.isEmpty else {
             return
         }
-        startAnimating()
+        showLoading()
         LocationModule().locationOf(city: city) { [weak self] (result) in
             DispatchQueue.main.async {
-                self?.stopAnimating()
+                self?.hideLoading()
                 switch result {
                 case .success(let location):
                     let main = MainViewController(with: location)
