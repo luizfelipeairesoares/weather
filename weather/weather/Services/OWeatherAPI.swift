@@ -18,7 +18,7 @@ enum OWeatherAPI {
 extension OWeatherAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.openweathermap.org/data/2.5/")!
+        return URL(string: Environment.current.weatherApiBaseURL)!
     }
     
     var path: String {

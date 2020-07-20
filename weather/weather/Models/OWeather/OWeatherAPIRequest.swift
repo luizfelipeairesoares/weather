@@ -21,7 +21,7 @@ struct OWeatherAPIRequest: Encodable {
         self.lon    = lon
         self.city   = city
         self.units  = "metric"
-        self.appid  = "0afb9e9bb7c5c3c2b3c3b6beb57855cf"
+        self.appid  = Environment.current.weatherApiKey
     }
     
     private enum CodingKeys: String, CodingKey {

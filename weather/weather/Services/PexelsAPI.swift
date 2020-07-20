@@ -18,7 +18,7 @@ enum PexelsAPI {
 extension PexelsAPI: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.pexels.com/v1/")!
+        return URL(string: Environment.current.photoApiBaseURL)!
     }
     
     var path: String {
@@ -50,7 +50,7 @@ extension PexelsAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        return ["Authorization" : "563492ad6f91700001000001334a3316921c49ddb311546511d3951d"]
+        return ["Authorization" : Environment.current.photoApiKey]
     }
     
 }
