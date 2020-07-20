@@ -72,7 +72,7 @@ class MainViewController: WeatherViewController, MainViewControllerProtocol {
         super.viewDidLoad()
         
         if let navController = navigationController, navController.viewControllers.count > 1 {
-            viewMain.backButton.isHidden = false
+            viewMain.backButton.isHidden = navController.viewControllers.first is LocationViewController ? true : false
         }
         
         requestPhotos()
