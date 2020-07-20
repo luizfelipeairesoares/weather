@@ -38,7 +38,7 @@ extension PexelsAPI: TargetType {
     var sampleData: Data {
         switch self {
         case .search:
-            return Data()
+            return MockResponse().data(json: "photos")
         }
     }
     

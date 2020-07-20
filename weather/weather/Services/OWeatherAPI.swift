@@ -38,7 +38,7 @@ extension OWeatherAPI: TargetType {
     var sampleData: Data {
         switch self {
         case .onecall:
-            return Data()
+            return MockResponse().data(json: "weather")
         }
     }
     
