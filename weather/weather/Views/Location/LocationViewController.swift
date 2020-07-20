@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationViewController: UIViewController {
+class LocationViewController: WeatherViewController {
     
     // MARK: - Private Properties
     
@@ -16,8 +16,7 @@ class LocationViewController: UIViewController {
         let view = LocationView()
         view.buttonAsk.addTarget(self, action: #selector(buttonPermissionTapped(_:)), for: .touchUpInside)
         view.userTappedDoneInKeyboard = { [weak self] text in
-            let userLocation = UserLocation(lat: nil, lon: nil, city: text)
-            self?.showMainView(with: userLocation)
+            self?.showCityWeather(city: text)
         }
         return view
     }()
@@ -64,6 +63,22 @@ class LocationViewController: UIViewController {
                     self?.showMainView(with: userLocation)
                 case .failure(let error):
                     self?.showAlert(message: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func showCityWeather(city: String) {
+        showLoading(color: .systemGreen)
+        LocationModule().locationOf(city: city) { [weak self] (result) in
+            DispatchQueue.main.async {
+                self?.hideLoading()
+                switch result {
+                case .success(let location):
+                    UserDefaults.standard.set(location.toDict(), forKey: "user_location")
+                    self?.showMainView(with: location)
+                case .failure(let error):
+                    self?.showAlert(with: error.localizedDescription)
                 }
             }
         }
