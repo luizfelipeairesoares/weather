@@ -70,8 +70,8 @@ class LocationViewController: UIViewController {
     }
     
     private func showMainView(with userLocation: UserLocation) {
-        let mainViewController = MainViewController(with: userLocation)
-        navigationController?.pushViewController(mainViewController, animated: true)
+        guard let navigationController = navigationController else { fatalError() }
+        MainCoordinator().showMainView(userLocation: userLocation, from: navigationController)
     }
     
     private func showAlert(message: String) {
