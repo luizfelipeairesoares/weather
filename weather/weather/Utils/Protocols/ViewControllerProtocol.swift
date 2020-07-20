@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 protocol ViewControllerProtocol {
     
-    func showLoading()
+    func showLoading(color: UIColor)
     func hideLoading()
     func showAlert(with message: String)
     
