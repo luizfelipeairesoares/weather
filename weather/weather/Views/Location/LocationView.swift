@@ -18,13 +18,13 @@ class LocationView: UIView {
         
     }
     
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "img_asklocation"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var labelAsk: UILabel = {
+    private(set) lazy var labelAsk: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Hi!\nWe need your location to provide a better experience for you.\n\nBut don't worry, it isn't mandatory!\n\nIf you don't want to give this permission, you can type a city name in the field below and we'll show the weather forecast of that city."
