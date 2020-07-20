@@ -46,7 +46,7 @@ class MainView: UIView {
         
     }
     
-    private lazy var alphaView: UIView = {
+    private(set) lazy var alphaView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.black.withAlphaComponent(0.32)
@@ -74,7 +74,7 @@ class MainView: UIView {
         return label
     }()
     
-    private lazy var lineView: UIView = {
+    private(set) lazy var lineView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -83,14 +83,14 @@ class MainView: UIView {
         return view
     }()
     
-    private lazy var stackContainerView: UIView = {
+    private(set) lazy var stackContainerView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white.withAlphaComponent(0.16)
         return view
     }()
     
-    private lazy var stackView: UIStackView = {
+    private(set) lazy var stackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -99,12 +99,12 @@ class MainView: UIView {
         return stackView
     }()
     
-    private lazy var currentWeatherView: CurrentWeatherView = {
+    private(set) lazy var currentWeatherView: CurrentWeatherView = {
         let view = CurrentWeatherView()
         return view
     }()
     
-    private lazy var weatherInfoView: WeatherInfoView = {
+    private(set) lazy var weatherInfoView: WeatherInfoView = {
         let view = WeatherInfoView()
         return view
     }()
@@ -124,8 +124,6 @@ class MainView: UIView {
         button.backgroundColor = UIColor.lightGray.withAlphaComponent(0.9)
         return button
     }()
-
-    // MARK: - Public Properties
     
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)

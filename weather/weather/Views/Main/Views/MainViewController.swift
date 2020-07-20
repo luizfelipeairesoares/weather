@@ -8,7 +8,14 @@
 
 import UIKit
 
-class MainViewController: WeatherViewController {
+protocol MainViewControllerProtocol: AnyObject {
+    
+    init(with userLocation: UserLocation, coordinator: MainCoordinatorProtocol,
+         weatherService: WeatherServiceProtocol, photosService: PexelsServiceProtocol)
+    
+}
+
+class MainViewController: WeatherViewController, MainViewControllerProtocol {
     
     // MARK: - Private Properties
     
@@ -17,21 +24,29 @@ class MainViewController: WeatherViewController {
         return view
     }()
     
-    private var photos: [PexelsPhoto]
-    private var photoIndex: Int
     private let currentLocation: UserLocation
-    private var weatherForecast: [OWeather]
+    private let coordinator: MainCoordinatorProtocol
+    private let weatherService: WeatherServiceProtocol
+    private let photosService: PexelsServiceProtocol
+    
+    private(set) var weatherForecast: [OWeather]
+    private(set) var photos: [PexelsPhoto]
+    private var photoIndex: Int
     
     private var timerPhoto: Timer?
     private var searchedCity: String?
     
     // MARK: - Init
     
-    required init(with location: UserLocation) {
+    required init(with userLocation: UserLocation, coordinator: MainCoordinatorProtocol,
+                  weatherService: WeatherServiceProtocol = WeatherService(), photosService: PexelsServiceProtocol = PexelsService()) {
         photos = []
         photoIndex = 0
-        currentLocation = location
+        currentLocation = userLocation
         weatherForecast = []
+        self.coordinator = coordinator
+        self.weatherService = weatherService
+        self.photosService = photosService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,6 +55,9 @@ class MainViewController: WeatherViewController {
         photoIndex = 0
         currentLocation = UserLocation()
         weatherForecast = []
+        coordinator = MainCoordinator()
+        weatherService = WeatherService()
+        photosService = PexelsService()
         super.init(coder: coder)
     }
     
@@ -100,7 +118,7 @@ class MainViewController: WeatherViewController {
     private func requestPhotos() {
         showLoading()
         let request = PexelsAPIRequest(query: currentLocation.city ?? "", page: 1)
-        PexelsService().requestPhotos(request: request) { [weak self] (result) in
+        photosService.requestPhotos(request: request) { [weak self] (result) in
             switch result {
             case .success(let response):
                 self?.photos.append(contentsOf: response.photos)
@@ -114,7 +132,7 @@ class MainViewController: WeatherViewController {
     
     private func requestWeather() {
         let request = OWeatherAPIRequest(lat: currentLocation.lat, lon: currentLocation.lon, city: currentLocation.city)
-        WeatherService().requestWeather(request: request) { [weak self] (result) in
+        weatherService.requestWeather(request: request) { [weak self] (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -128,7 +146,7 @@ class MainViewController: WeatherViewController {
                     }
                 }
             case .failure(let error):
-                print(error)
+                self?.showAlert(with: error.localizedDescription)
             }
             self?.hideLoading()
         }
@@ -162,10 +180,10 @@ class MainViewController: WeatherViewController {
                 self?.hideLoading()
                 switch result {
                 case .success(let location):
-                    let main = MainViewController(with: location)
-                    self?.navigationController?.pushViewController(main, animated: true)
+                    guard let navigationController = self?.navigationController else { fatalError() }
+                    self?.coordinator.showMainView(userLocation: location, from: navigationController)
                 case .failure(let error):
-                    print(error)
+                    self?.showAlert(with: error.localizedDescription)
                 }
             }
         }
