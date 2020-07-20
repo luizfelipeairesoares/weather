@@ -13,5 +13,6 @@ protocol ViewControllerProtocol {
     
     func showLoading()
     func hideLoading()
+    func showAlert(with message: String)
     
 }
