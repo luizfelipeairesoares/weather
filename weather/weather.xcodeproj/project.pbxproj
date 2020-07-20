@@ -34,6 +34,7 @@
 		555C809424BFDB8200C42262 /* PexelsAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C809324BFDB8200C42262 /* PexelsAPIResponse.swift */; };
 		555C809824C0021700C42262 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C809724C0021700C42262 /* MainViewController.swift */; };
 		555C809A24C0022300C42262 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C809924C0022300C42262 /* MainView.swift */; };
+		55B84EA424C5204A0089912C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B84EA324C5204A0089912C /* Environment.swift */; };
 		55BB39E224C3767200CE4F76 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB39E124C3767200CE4F76 /* UIView.swift */; };
 		55BB39E424C386AA00CE4F76 /* LocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB39E324C386AA00CE4F76 /* LocationModule.swift */; };
 		55C6296F24B92F17008A3FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C6296E24B92F17008A3FD9 /* AppDelegate.swift */; };
@@ -102,6 +103,7 @@
 		555C809324BFDB8200C42262 /* PexelsAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsAPIResponse.swift; sourceTree = "<group>"; };
 		555C809724C0021700C42262 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		555C809924C0022300C42262 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		55B84EA324C5204A0089912C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		55BB39E124C3767200CE4F76 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		55BB39E324C386AA00CE4F76 /* LocationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModule.swift; sourceTree = "<group>"; };
 		55C6296B24B92F17008A3FD9 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +364,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		55B84EA224C520340089912C /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				55B84EA324C5204A0089912C /* Environment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		55C6296224B92F17008A3FD9 = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +504,7 @@
 		55C629B824B948F0008A3FD9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				55B84EA224C520340089912C /* Environment */,
 				5503E47824C4EA5E001E9401 /* Mocks */,
 				5503E46D24C4D9AB001E9401 /* Coordinators */,
 				5503E46824C4D458001E9401 /* ViewControllers */,
@@ -737,6 +748,7 @@
 				55D25D0F24C2696D009E0AEB /* ForecastCollectionViewCell.swift in Sources */,
 				55C629B424B947C3008A3FD9 /* WeatherError.swift in Sources */,
 				555C809424BFDB8200C42262 /* PexelsAPIResponse.swift in Sources */,
+				55B84EA424C5204A0089912C /* Environment.swift in Sources */,
 				55C629AB24B94530008A3FD9 /* OWeatherAPI.swift in Sources */,
 				555C808E24BFCE4600C42262 /* PexelsPhoto.swift in Sources */,
 				55BB39E424C386AA00CE4F76 /* LocationModule.swift in Sources */,
@@ -938,6 +950,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				kPhotoAPIKey = 563492ad6f91700001000001334a3316921c49ddb311546511d3951d;
+				kPhotoAPIServer = "https://api.pexels.com/v1/";
+				kWeatherAPIKey = 0afb9e9bb7c5c3c2b3c3b6beb57855cf;
+				kWeatherAPIServer = "https://api.openweathermap.org/data/2.5/";
 			};
 			name = Debug;
 		};
@@ -957,6 +973,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				kPhotoAPIKey = 563492ad6f91700001000001334a3316921c49ddb311546511d3951d;
+				kPhotoAPIServer = "https://api.pexels.com/v1/";
+				kWeatherAPIKey = 0afb9e9bb7c5c3c2b3c3b6beb57855cf;
+				kWeatherAPIServer = "https://api.openweathermap.org/data/2.5/";
 			};
 			name = Release;
 		};
