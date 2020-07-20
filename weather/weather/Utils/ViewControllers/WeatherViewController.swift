@@ -35,7 +35,8 @@ class WeatherViewController: UIViewController, ViewControllerProtocol {
     
     // MARK: - ViewControllerProtocol Functions
     
-    func showLoading() {
+    func showLoading(color: UIColor = .white) {
+        loading.color = color
         loading.startAnimating()
     }
     
