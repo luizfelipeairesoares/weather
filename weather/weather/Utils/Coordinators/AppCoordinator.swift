@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  AppCoordinator.swift
 //  weather
 //
 //  Created by Luiz Felipe Aires Soares on 19/07/20.
@@ -8,13 +8,20 @@
 
 import UIKit
 
-class MainCoordinator: CoordinatorProtocol {
+protocol AppCoordinatorProtocol: AnyObject {
+    
+    func start() -> UIViewController
+    
+}
+
+class AppCoordinator: AppCoordinatorProtocol {
     
     func start() -> UIViewController {
         var rootViewController: UIViewController? = nil
         if let rawUserLocation = UserDefaults.standard.value(forKey: "user_location") as? [String : Any] {
             let userLocation = UserLocation(fromDict: rawUserLocation)
-            rootViewController = MainViewController(with: userLocation)
+            guard let mainViewController = MainCoordinator().startMainView(with: userLocation) as? MainViewController else { fatalError() }
+            rootViewController = mainViewController
         } else {
             rootViewController = LocationViewController()
         }
