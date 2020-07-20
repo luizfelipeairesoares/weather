@@ -9,7 +9,7 @@
 import Foundation
 import Mapper
 
-struct OWeatherDescription: Mappable {
+struct OWeatherDescription: Mappable, Decodable {
     
     let id: Int
     let main: String

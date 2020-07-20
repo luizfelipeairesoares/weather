@@ -9,7 +9,7 @@
 import Foundation
 import Mapper
 
-struct PexelsPhoto: Mappable {
+struct PexelsPhoto: Mappable, Decodable {
     
     let id: Int
     let width: Int

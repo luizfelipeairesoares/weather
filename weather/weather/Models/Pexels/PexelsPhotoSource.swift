@@ -9,7 +9,7 @@
 import Foundation
 import Mapper
 
-struct PexelsPhotoSource: Mappable {
+struct PexelsPhotoSource: Mappable, Decodable {
     
     let original: String?
     let large2x: String?

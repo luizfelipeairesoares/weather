@@ -9,7 +9,7 @@
 import Foundation
 import Mapper
 
-struct OWeatherAPIResponse: Mappable {
+struct OWeatherAPIResponse: Mappable, Decodable {
     
     let lat: Double
     let lon: Double
@@ -38,6 +38,15 @@ struct OWeatherAPIResponse: Mappable {
             weather             = try map.from(CodingKeys.weather.rawValue)
             hourly              = try map.from(CodingKeys.hourly.rawValue)
             daily               = try map.from(CodingKeys.daily.rawValue)
+        } catch {
+            throw error
+        }
+    }
+    
+    static func from(data: Data) throws -> OWeatherAPIResponse {
+        do {
+            let object = try JSONDecoder().decode(OWeatherAPIResponse.self, from: data)
+            return object
         } catch {
             throw error
         }
