@@ -1,6 +1,6 @@
 # weather
 
-Weather is an small project that fetches photos and weather from two APIs:
+Weather is a small project that fetches photos and weather from two APIs:
  - [OpenWeather](https://openweathermap.org/api)
  - [Pexels](https://www.pexels.com/api/)
 
